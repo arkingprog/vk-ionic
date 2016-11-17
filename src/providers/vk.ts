@@ -1,11 +1,13 @@
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import {Config} from '../config/config'
-import {InAppBrowser} from "ionic-native";
+import { Config } from '../config/config'
+import { InAppBrowser } from "ionic-native";
 
-enum Scope{
+import { vkUserMethod } from '../lib/types/vkMethod.type'
+
+enum Scope {
   notify = 1,
   friends = 2,
   photos = 4,
@@ -24,63 +26,104 @@ enum Scope{
   stats = 1048576,
   market = 1048576,
 }
-let access='0230c9b1485ba126054040b8e2d1f084cc79ce999bece84ed5cfc4025ee0fee14bae9b147c154e1081750';
+
+let access = '0230c9b1485ba126054040b8e2d1f084cc79ce999bece84ed5cfc4025ee0fee14bae9b147c154e1081750';
+
 @Injectable()
 export class VK {
-  accessToken:any;
-  baseUrl:string;
-  private _isAuth:boolean = false;
+  vkInitParam: VKInitParams;
+  accessToken: any;
+  baseUrl: string;
+  private _isAuth: boolean = false;
+  browser: InAppBrowser;
+  initDone: boolean = false;
 
-  constructor(public http:Http) {
+  constructor(public http: Http) {
     this.baseUrl = 'https://oauth.vk.com/authorize';
-    this.accessToken=access;
-    this._isAuth=true;
+    this.accessToken = access;
+    this._isAuth = true;
+  }
+
+
+  init(params: VKInitParams): VK {
+    this.vkInitParam = params;
+    this.initDone = true;
+    return this;
   }
 
   login() {
-    let params = Config.getVKCrefentialsString();
-    let url = `${this.baseUrl}?${params}`;
-    return new Promise((resolve, reject)=> {
-      let browser = new InAppBrowser(url, '_blank');
-      let listener = browser.on('loadstop').subscribe((event:any)=> {
-        if (event.url.indexOf(Config.getVKCredentials().redirect_uri) > -1) {
+    return new Promise((resolve, reject) => {
+      if (!this.initDone) reject("Need initial setting VK");
+      let params = this.VKCrefentialsString();
+      let url = `${this.baseUrl}?${params}`;
+      this.browser = new InAppBrowser(url, '_blank');
+      let listener = this.browser.on('loadstop').subscribe((event: any) => {
+        if (event.url.indexOf(this.vkInitParam.redirect_uri) > -1) {
           listener.unsubscribe();
-          browser.close();
+          this.browser.close();
           let token = event.url.split('#')[1].split('&')[0].split('=')[1];
           this.accessToken = token;
-          this._isAuth=true;
+          this._isAuth = true;
           resolve(event.url);
         } else {
-          this._isAuth=false;
+          this._isAuth = false;
           reject("Could not authenticate");
         }
       });
     });
   }
 
-  get isAuth():boolean {
+  logout() {
+    this.browser = new InAppBrowser('', '', 'clearsessioncache=yes,clearcache=yes')
+  }
+  get isAuth(): boolean {
     return this._isAuth;
   }
 
-  getAccessToken() {
-    return this.accessToken;
-  }
-
   /**
-   *
+   * Request to VK api
+   * 
    * @param method
    * @param params
    * @returns {Observable<R>}
-     */
-  request(method:string,params:{}) {
-
-   return this.http.get(`${method}?access_token=${this.accessToken}`)
+   */
+  request(method: string, params: Object) {
+    const appV = Config.getVKCredentials().v;
+    let queryString = '';
+    for (let key in params) {
+      if (key) {
+        queryString += `&${key}=${params[key]}`;
+      }
+    }
+    let requestUrl = `/${method}?access_token=${this.accessToken}&v=${appV}${queryString}`
+    return this.http.get(requestUrl).map(res => res.json());
     // return this.http.get(`/friends.getOnline?v=5.52&access_token=50d900ca88ffd8c2d8a71374a599269cdd59d99929966b18cd2745a8392877e57bd5a19ae7f6eaf391cbf`).map(res=>res.json());
   }
 
-  setAccessToken(token) {
-    this.accessToken = token
+  users(subMethod: vkUserMethod) {
+    console.log(subMethod)
   }
 
+  private VKCrefentialsString() {
+    let params = '';
+    for (let key in this.vkInitParam) {
+      if (key) {
+        params += `&${key}=${this.vkInitParam[key]}`;
+      }
+    }
+    return params;
+  }
+}
 
+export interface VKInitParams {
+  // client_id= '5729897'
+  // display= 'mobile'
+  // redirect_uri= 'https://oauth.vk.com/blank.html'
+  // response_type= 'token'
+  // v= '5.60'
+  client_id: string;
+  display: string;
+  redirect_uri: string;
+  response_type: string;
+  v: string;
 }
