@@ -2,30 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { Config } from '../config/config'
 import { InAppBrowser } from "ionic-native";
 
 import { vkUserMethod } from '../lib/types/vkMethod.type'
 
-enum Scope {
-  notify = 1,
-  friends = 2,
-  photos = 4,
-  audio = 8,
-  video = 16,
-  pages = 128,
-  status = 1024,
-  notes = 2048,
-  messages = 4096,
-  wall = 8192,
-  ads = 32768,
-  offline = 65536,
-  docs = 131072,
-  groups = 262144,
-  notifications = 524288,
-  stats = 1048576,
-  market = 1048576,
-}
 
 let access = '0230c9b1485ba126054040b8e2d1f084cc79ce999bece84ed5cfc4025ee0fee14bae9b147c154e1081750';
 
@@ -48,13 +28,14 @@ export class VK {
   init(params: VKInitParams): VK {
     this.vkInitParam = params;
     this.initDone = true;
+    console.log(this.VKCredentialsString());
     return this;
   }
 
   login() {
     return new Promise((resolve, reject) => {
       if (!this.initDone) reject("Need initial setting VK");
-      let params = this.VKCrefentialsString();
+      let params = this.VKCredentialsString();
       let url = `${this.baseUrl}?${params}`;
       this.browser = new InAppBrowser(url, '_blank');
       let listener = this.browser.on('loadstop').subscribe((event: any) => {
@@ -88,7 +69,7 @@ export class VK {
    * @returns {Observable<R>}
    */
   request(method: string, params: Object) {
-    const appV = Config.getVKCredentials().v;
+    const appV = this.vkInitParam.v;
     let queryString = '';
     for (let key in params) {
       if (key) {
@@ -104,12 +85,18 @@ export class VK {
     console.log(subMethod)
   }
 
-  private VKCrefentialsString() {
+  private VKCredentialsString() {
     let params = '';
     for (let key in this.vkInitParam) {
-      if (key) {
-        params += `&${key}=${this.vkInitParam[key]}`;
+      if (key === "scope") {
+        let scope = this.vkInitParam[key].reduce(function (sum, current) {
+          return sum + current;
+        }, 0);
+        params += `&scope=${scope}`;
+        break;
       }
+      else
+        params += `&${key}=${this.vkInitParam[key]}`;
     }
     return params;
   }
@@ -126,4 +113,25 @@ export interface VKInitParams {
   redirect_uri: string;
   response_type: string;
   v: string;
+  scope: VKScope[];
+}
+
+export enum VKScope {
+  notify = 1,
+  friends = 2,
+  photos = 4,
+  audio = 8,
+  video = 16,
+  pages = 128,
+  status = 1024,
+  notes = 2048,
+  messages = 4096,
+  wall = 8192,
+  ads = 32768,
+  offline = 65536,
+  docs = 131072,
+  groups = 262144,
+  notifications = 524288,
+  stats = 1048576,
+  market = 1048576,
 }

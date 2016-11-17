@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { LoginPage } from '../pages/login/login';
-import { VK, VKInitParams } from "../providers/vk";
+import { VK, VKInitParams,VKScope } from "../providers/vk";
 import { MainPage } from "../pages/main/main";
 
 @Component({
@@ -19,14 +19,13 @@ export class MyApp {
       display: 'mobile',
       redirect_uri: 'https://oauth.vk.com/blank.html',
       response_type: 'token',
-      v: '5.60'
+      v: '5.60',
+      scope:[VKScope.friends,VKScope.messages]
     }
 
     platform.ready().then(() => {
 
       self.vk.init(vkInitParam);
-
-
       if (self.vk.isAuth)
         self.rootPage = MainPage
       else
