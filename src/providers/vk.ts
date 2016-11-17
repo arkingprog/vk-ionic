@@ -6,7 +6,6 @@ import { InAppBrowser } from "ionic-native";
 
 import { vkUserMethod } from '../lib/types/vkMethod.type'
 
-
 let access = '0230c9b1485ba126054040b8e2d1f084cc79ce999bece84ed5cfc4025ee0fee14bae9b147c154e1081750';
 
 @Injectable()
@@ -24,11 +23,9 @@ export class VK {
     this._isAuth = true;
   }
 
-
   init(params: VKInitParams): VK {
     this.vkInitParam = params;
     this.initDone = true;
-    console.log(this.VKCredentialsString());
     return this;
   }
 
@@ -57,6 +54,7 @@ export class VK {
   logout() {
     this.browser = new InAppBrowser('', '', 'clearsessioncache=yes,clearcache=yes')
   }
+
   get isAuth(): boolean {
     return this._isAuth;
   }
