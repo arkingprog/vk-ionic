@@ -17,9 +17,9 @@ export class Config {
     let params = '';
     for (let key in obj) {
       if (key) {
-        params += `${key}=${obj[key]}&`;
+        params += `&${key}=${obj[key]}`;
       }
     }
-    return params.substring(0, params.length - 1);
+    return params;
   }
 }

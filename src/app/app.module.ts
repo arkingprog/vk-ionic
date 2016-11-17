@@ -4,12 +4,13 @@ import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
 import {LoginPage} from '../pages/login/login';
 import {VK} from "../providers/vk";
-
+import {MainPage} from "../pages/main/main";
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    MainPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -18,7 +19,8 @@ import {VK} from "../providers/vk";
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    MainPage
   ],
   providers: [
     VK
