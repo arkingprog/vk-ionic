@@ -1,0 +1,4 @@
+#VK ionic client
+
+
+##TODO
