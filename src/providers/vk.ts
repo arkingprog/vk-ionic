@@ -29,7 +29,7 @@ export class VK {
    * @param params
    * @returns {Observable<R>}
    */
-  request(method: string, params: Object) {
+  api(method: string, params: Object) {
     const appV = this.vkInitParam.v;
     let queryString = '';
     let requestUrl = '';
