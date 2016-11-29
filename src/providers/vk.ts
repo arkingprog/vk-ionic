@@ -4,23 +4,43 @@ import 'rxjs/add/operator/map';
 
 import { InAppBrowser } from "ionic-native";
 
-import { vkUserMethod } from '../lib/types/vkMethod.type'
-
 let access = '0230c9b1485ba126054040b8e2d1f084cc79ce999bece84ed5cfc4025ee0fee14bae9b147c154e1081750';
+
+// https://api.vk.com/method/users.get?access_token=0230c9b1485ba126054040b8e2d1f084cc79ce999bece84ed5cfc4025ee0fee14bae9b147c154e1081750&fields=photo_id, verified, sex, bdate, city, country, home_town, has_photo, photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig, photo_max, photo_max_orig, online, lists, domain, has_mobile, contacts, site, education, universities, schools, status, last_seen, followers_count, common_count, occupation, nickname, relatives, relation, personal, connections, exports, wall_comments, activities, interests, music, movies, tv, books, games, about, quotes, can_post, can_see_all_posts, can_see_audio, can_write_private_message, can_send_friend_request, is_favorite, is_hidden_from_feed, timezone, screen_name, maiden_name, crop_photo, is_friend, friend_status, career, military, blacklisted, blacklisted_by_me
 
 @Injectable()
 export class VK {
   vkInitParam: VKInitParams;
   accessToken: any;
-  baseUrl: string;
+  baseUrl: string = 'https://oauth.vk.com/authorize';
   private _isAuth: boolean = false;
   browser: InAppBrowser;
   initDone: boolean = false;
 
   constructor(public http: Http) {
-    this.baseUrl = 'https://oauth.vk.com/authorize';
     this.accessToken = access;
     this._isAuth = true;
+  }
+
+  /**
+   * Request to VK api
+   * 
+   * @param method
+   * @param params
+   * @returns {Observable<R>}
+   */
+  request(method: string, params: Object) {
+    const appV = this.vkInitParam.v;
+    let queryString = '';
+    let requestUrl = '';
+
+    for (let key in params)
+      queryString += `&${key}=${params[key]}`;
+     
+    requestUrl = `/${method}?access_token=${this.accessToken}&v=${appV}${queryString}`;
+    console.log(requestUrl);
+    return this.http.get(requestUrl).map(res => res.json());
+    // return this.http.get(`/friends.getOnline?v=5.52&access_token=50d900ca88ffd8c2d8a71374a599269cdd59d99929966b18cd2745a8392877e57bd5a19ae7f6eaf391cbf`).map(res=>res.json());
   }
 
   init(params: VKInitParams): VK {
@@ -57,30 +77,6 @@ export class VK {
 
   get isAuth(): boolean {
     return this._isAuth;
-  }
-
-  /**
-   * Request to VK api
-   * 
-   * @param method
-   * @param params
-   * @returns {Observable<R>}
-   */
-  request(method: string, params: Object) {
-    const appV = this.vkInitParam.v;
-    let queryString = '';
-    for (let key in params) {
-      if (key) {
-        queryString += `&${key}=${params[key]}`;
-      }
-    }
-    let requestUrl = `/${method}?access_token=${this.accessToken}&v=${appV}${queryString}`
-    return this.http.get(requestUrl).map(res => res.json());
-    // return this.http.get(`/friends.getOnline?v=5.52&access_token=50d900ca88ffd8c2d8a71374a599269cdd59d99929966b18cd2745a8392877e57bd5a19ae7f6eaf391cbf`).map(res=>res.json());
-  }
-
-  users(subMethod: vkUserMethod) {
-    console.log(subMethod)
   }
 
   private VKCredentialsString() {
