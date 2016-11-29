@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, Platform} from 'ionic-angular';
-import {VK} from '../../providers/vk';
+import { VK } from "../../providers/vk";
 import {HomePage} from "../home/home";
 
 // import {HomePage} from '../../pages/home/home';

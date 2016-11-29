@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { VK } from '../../providers/vk';
+import { VK } from "../../providers/vk";
 import { NavController } from 'ionic-angular';
 
 @Component({
