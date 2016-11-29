@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "0.0.42",
-    "typescript": "2.0.6"
+    "typescript": "2.0.10"
   },
   "description": "vk: An Ionic project",
   "cordovaPlugins": [
