@@ -1,5 +1,5 @@
 
-export interface responseUser {
+export interface User {
     id: number;
     first_name: string;
     last_name: string;
@@ -45,8 +45,13 @@ export interface responseUser {
     //TODO add last_name_{case}
     last_seen?: last_seen;
     lists?: string;
-    maiden_name?: string
-    military
+    maiden_name?: string;
+    photo_id?:string;
+    photo_200?:string;
+    photo_400_orig?:string;
+    photo_max?:string;
+    photo_max_orig?:string;
+    
 
 }
 
@@ -118,9 +123,9 @@ export interface country {
 }
 
 export interface crop_photo {
-    phoro: any; //GOTO change to photo Object
-    crop: crop;
-    rect: rect;
+    photo?: any; //GOTO change to photo Object
+    crop?: crop;
+    rect?: rect;
 
 }
 
@@ -149,3 +154,127 @@ export interface last_seen {
     time: number;
     platform: number;
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// export interface LastSeen {
+//     time: number;
+//     platform: number;
+// }
+
+export interface Photo {
+    pid: number;
+    aid: number;
+    owner_id: number;
+    src: string;
+    src_big: string;
+    src_small: string;
+    src_xbig: string;
+    src_xxbig: string;
+    src_xxxbig: string;
+    width: number;
+    height: number;
+    text: string;
+    created: number;
+    lat: number;
+    long: number;
+    post_id: number;
+}
+
+// export interface Crop {
+//     x: number;
+//     y: number;
+//     x2: number;
+//     y2: number;
+// }
+
+// export interface Rect {
+//     x: number;
+//     y: number;
+//     x2: number;
+//     y2: number;
+// }
+
+// export interface CropPhoto {
+//     photo: Photo;
+//     crop: Crop;
+//     rect: Rect;
+// }
+
+// export interface Relative {
+//     uid: number;
+//     type: string;
+// }
+
+// export interface Response {
+//     uid?: number;
+//     first_name?: string;
+//     last_name?: string;
+//     sex?: number;
+//     nickname?: string;
+//     domain?: string;
+//     screen_name?: string;
+//     bdate?: string;
+//     city?: number;
+//     country?: number;
+//     timezone?: number;
+//     photo_50?: string;
+//     photo_100?: string;
+//     photo_200?: string;
+//     photo_max?: string;
+//     photo_200_orig?: string;
+//     photo_400_orig?: string;
+//     photo_max_orig?: string;
+//     photo_id?: string;
+//     has_photo?: number;
+//     has_mobile?: number;
+//     is_friend?: number;
+//     friend_status?: number;
+//     online?: number;
+//     wall_comments?: number;
+//     can_post?: number;
+//     can_see_all_posts?: number;
+//     can_see_audio?: number;
+//     can_write_private_message?: number;
+//     can_send_friend_request?: number;
+//     mobile_phone?: string;
+//     home_phone?: string;
+//     skype?: string;
+//     twitter?: string;
+//     site?: string;
+//     status?: string;
+//     last_seen?: LastSeen;
+//     exports?: any[];
+//     crop_photo?: CropPhoto;
+//     verified?: number;
+//     followers_count?: number;
+//     blacklisted?: number;
+//     blacklisted_by_me?: number;
+//     is_favorite?: number;
+//     is_hidden_from_feed?: number;
+//     common_count?: number;
+//     career?: any[];
+//     military?: any[];
+//     university?: number;
+//     university_name?: string;
+//     faculty?: number;
+//     faculty_name?: string;
+//     graduation?: number;
+//     home_town?: string;
+//     relation?: number;
+//     personal?: any[];
+//     interests?: string;
+//     music?: string;
+//     activities?: string;
+//     movies?: string;
+//     tv?: string;
+//     books?: string;
+//     games?: string;
+//     universities?: any[];
+//     schools?: any[];
+//     about?: string;
+//     relatives?: Relative[];
+//     quotes?: string;
+// }
