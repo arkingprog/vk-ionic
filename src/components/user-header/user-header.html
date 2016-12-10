@@ -1,0 +1,27 @@
+<!--<div class="bg-img" [ngStyle]="{'background-image':'url('+ user?.crop_photo.photo.photo_2560 +')'}">-->
+<div class="bg-img">
+    <div class="user-name">
+        {{ user?.first_name }} {{ user?.last_name }}
+    </div>
+    <div class="user-online">
+        <div>
+            {{ user?.online | userOnline:user?.last_seen?.time }}
+        </div>
+        <ion-icon name="camera" class="user-camera"></ion-icon>
+    </div>
+</div>
+<div class="user-status">
+    <ion-icon md="ios-text" class="icon"></ion-icon>Изменить статус
+</div>
+<div class="user-friends">
+    <ion-icon name="people" class="icon"></ion-icon>{{user?.counters.friends | declensionPipe:['друг','друга','друзей']}}  
+</div>
+<div class="user-followers">
+    <ion-icon name="logo-rss" class="icon"></ion-icon>{{user?.counters.followers | declensionPipe:['подписчик','подписчика','подписчика']}}  
+</div>
+<div class="user-city">
+    <ion-icon name="home" class="icon"></ion-icon>Город: {{ user?.city.title }}
+</div>
+<div class="show-more-info">
+    <ion-icon name="more" class="icon"></ion-icon>Показать информацию
+</div>
