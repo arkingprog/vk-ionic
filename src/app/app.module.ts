@@ -1,3 +1,5 @@
+import { DeclensionPipe } from './../pipes/declension-pipe';
+import { UserOnlinePipe } from './../pipes/user-online';
 import { UserHeaderComponent } from './../components/user-header/user-header';
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
@@ -12,7 +14,9 @@ import { MainPage } from "../pages/main/main";
     HomePage,
     LoginPage,
     MainPage,
-    UserHeaderComponent
+    UserHeaderComponent,
+    UserOnlinePipe,
+    DeclensionPipe
   ],
   imports: [
     IonicModule.forRoot(MyApp)
