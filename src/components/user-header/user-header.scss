@@ -1,5 +1,4 @@
 user-header {
-}
 .bg-img{ 
     background-image:url("./../../assets/tmp/camera_400.png");
     color: #fff;
@@ -36,9 +35,23 @@ user-header {
 .user-status,.user-friends,.user-followers,.user-city,.show-more-info{
     color:#ccc;
     display: flex;
-    align-items: center;
-    margin: 10px 0;
     line-height: 20px;
+    height: 36px;
+    align-items: center;
+}
+.show-more-info{
+    // color:rgb(32.5%, 42.7%, 99.6%);
+    color: #42649E;
+    opacity: 0.8;
+}
+.user-friends{
+    width: 100%;
+    justify-content: space-between;
+}
+.friends{
+    display: flex;
+    align-items: center;
+    
 }
 
 .icon{
@@ -49,3 +62,23 @@ user-header {
     justify-content: center;
 }
 
+
+& .activated{
+    & .random-img{
+    border-color:rgba(158,158,158,0.1);
+    }
+}
+.customButton{
+    width:100%; 
+    padding: 0;
+    margin: 0;
+    text-transform: none;
+    height: 36px;
+    border:0;
+    & > .button-inner{
+        justify-content: flex-start;
+    }
+      
+}
+
+}
