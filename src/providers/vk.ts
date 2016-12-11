@@ -39,7 +39,7 @@ export class VK {
      
     requestUrl = `/${method}?access_token=${this.accessToken}&v=${appV}${queryString}`;
     console.log(requestUrl);
-    return this.http.get(requestUrl).map(res => res.json());
+    return this.http.get(requestUrl).map(res => res.json().response);
     // return this.http.get(`/friends.getOnline?v=5.52&access_token=50d900ca88ffd8c2d8a71374a599269cdd59d99929966b18cd2745a8392877e57bd5a19ae7f6eaf391cbf`).map(res=>res.json());
   }
 
