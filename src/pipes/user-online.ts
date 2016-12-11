@@ -10,7 +10,7 @@ export class UserOnlinePipe implements PipeTransform {
   transform(value: number, lastSeen: any): string {
     moment.locale('ru');
     if (lastSeen) {
-      return value > 0 ? 'Онлайн' : `Последний раз был ${moment(lastSeen * 1000).fromNow()}`;
+      return value > 0 ? 'Онлайн' : ` был в сети ${moment(lastSeen * 1000).fromNow()}`;
     }
   }
 }
