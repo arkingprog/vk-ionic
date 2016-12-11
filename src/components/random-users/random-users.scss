@@ -1,0 +1,25 @@
+random-users {
+    display: flex;
+    margin-right: 15px;
+}
+
+img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border:3px solid #fff;
+    box-sizing: content-box;
+}
+
+img:first-child{ 
+    margin-right: -10px;
+    z-index: 3;
+
+}
+img:nth-child(2){
+    margin-right: -10px;
+    z-index: 2;
+}
+img:last-child{
+    z-index: 1;
+}
