@@ -1,3 +1,4 @@
+import { RandomUsersComponent } from './../components/random-users/random-users';
 import { DeclensionPipe } from './../pipes/declension-pipe';
 import { UserOnlinePipe } from './../pipes/user-online';
 import { UserHeaderComponent } from './../components/user-header/user-header';
@@ -15,6 +16,7 @@ import { MainPage } from "../pages/main/main";
     LoginPage,
     MainPage,
     UserHeaderComponent,
+    RandomUsersComponent,
     UserOnlinePipe,
     DeclensionPipe
   ],
