@@ -24,7 +24,7 @@ export class MainPage {
         'last_seen'
       ]
     }).subscribe(data => {
-      this.user = data.response[0];// as responseUser;  
+      this.user = data[0];// as responseUser;  
     })
   }
   onPageScroll(event) {
