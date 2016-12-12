@@ -1,12 +1,12 @@
 {
   "name": "vk",
-  "app_id": "c9887ceb",
+  "app_id": "52598a58",
   "v2": true,
   "typescript": true,
-  "proxies": [
-    {
-      "path": "/",
-      "proxyUrl": "https://api.vk.com/method/"
-    }
-  ]
+  "proxies": [ 
+    { 
+      "path": "/", 
+      "proxyUrl": "https://api.vk.com/method/" 
+      } 
+      ]
 }
