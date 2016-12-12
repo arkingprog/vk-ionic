@@ -1,0 +1,29 @@
+new-note {
+        width:100%;
+         display: flex;
+        align-items: center;
+        justify-content: center;
+    .new-note{
+        i{
+            font-size: 20px;
+            margin: 0 20px 0 0;
+        }
+        line-height: 20px;
+        height: 36px;
+        color:#ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .customButton > .button-inner{
+        justify-content: center;
+    }
+    .icon{
+         font-size: 20px;
+         margin: 0 20px 0 0;
+    }
+}
+ion-card-content{
+ display: flex;
+}

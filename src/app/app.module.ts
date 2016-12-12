@@ -1,4 +1,6 @@
-import { RandomUsersComponent } from './../components/random-users/random-users';
+import { WallPhotoSliderComponent } from './../components/wall-photo-slider/wall-photo-slider';
+import { NewNoteComponent } from './../components/new-note/new-note.ts';
+import { RandomUsersComponent } from './../components/random-users/random-users.ts';
 import { DeclensionPipe } from './../pipes/declension-pipe';
 import { UserOnlinePipe } from './../pipes/user-online';
 import { UserHeaderComponent } from './../components/user-header/user-header';
@@ -14,9 +16,11 @@ import { MainPage } from "../pages/main/main";
     MyApp,
     HomePage,
     LoginPage,
-    MainPage,
+    MainPage, 
     UserHeaderComponent,
     RandomUsersComponent,
+    WallPhotoSliderComponent,
+    NewNoteComponent,
     UserOnlinePipe,
     DeclensionPipe
   ],
