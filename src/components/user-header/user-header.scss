@@ -3,7 +3,7 @@ user-header {
     background-image:url("./../../assets/tmp/camera_400.png");
     color: #fff;
     background-size: cover;
-    height: 33%;
+    height: 250px;
     display: flex;
     flex-direction:column-reverse;
     align-items: flex-end;
@@ -40,8 +40,7 @@ user-header {
     align-items: center;
 }
 .show-more-info{
-    // color:rgb(32.5%, 42.7%, 99.6%);
-    color: #42649E;
+    color: #5e76b2;
     opacity: 0.8;
 }
 .user-friends{
@@ -65,20 +64,9 @@ user-header {
 
 & .activated{
     & .random-img{
-    border-color:rgba(158,158,158,0.1);
+    border-color:#ececec;
     }
 }
-.customButton{
-    width:100%; 
-    padding: 0;
-    margin: 0;
-    text-transform: none;
-    height: 36px;
-    border:0;
-    & > .button-inner{
-        justify-content: flex-start;
-    }
-      
-}
+
 
 }

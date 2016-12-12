@@ -14,3 +14,25 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+//rewtite button style for vk
+.customButton{
+    border:none;
+    width:100%; 
+    padding: 0;
+    margin: 0;
+    text-transform: none;
+    height: 36px;
+    border:0;
+    & > .button-inner{
+        justify-content: flex-start;
+    }
+      
+}
+
+.divider{   
+    background-color: #ccc;
+    width:2px;
+    height: 20px;
+    margin: auto;
+}
