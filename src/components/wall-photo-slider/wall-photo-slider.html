@@ -1,6 +1,11 @@
-<div class="header">
-  Фотографии <span class="count">{{count}}</span>
-</div>
-<div class="slider">
-  <img *ngFor="let photo of photos" src="{{ photo.photo_130 }}" alt="">
-</div>
+
+  <button ion-button clear class="customButton">
+    <div class="user-photos">
+      Фотографии <span class="count">{{count}}</span>
+    </div>
+</button>
+
+  <ion-slides [options]="swipeOptions">
+    <ion-slide *ngFor="let photo of photos" class="img" [ngStyle]="{'background-image':'url('+ photo.photo_604 +')'}" [style.width]="photo.x+'px'">
+    </ion-slide>
+  </ion-slides>

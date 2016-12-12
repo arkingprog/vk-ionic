@@ -1,3 +1,18 @@
 wall-photo-slider {
-height: 135px;
+    width:100%;
+   .img{
+        height: 100px;  
+         background-size: cover;
+   }
+   ion-slides{
+       margin: 0px 10px 5px 15px;
+   }
+   .user-photos{
+       padding: 15px;
+       color:#000;
+       .count{
+            color: #ccc;
+        }
+
+   }
 }
