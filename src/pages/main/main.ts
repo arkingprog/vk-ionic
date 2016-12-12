@@ -16,7 +16,8 @@ export class MainPage {
         '66505229'
       ],
       fields:
-      ['counters',
+      [
+        'counters',
         'photo_id',
         'crop_photo',
         'city',
@@ -28,7 +29,7 @@ export class MainPage {
     })
   }
   onPageScroll(event) {
-    console.log(event.target.scrollTop);
+    // console.log(event.target.scrollTop); 
   }
 
   ngAfterViewInit() {

@@ -1,8 +1,18 @@
 page-main {
+ 
 ion-header{
    display: none; 
 
 }
+ion-card{
+    border-radius: 0 !important;
+    margin:0 0 10px 0 !important;
+    width:100% !important;  
+    ion-card-content{
+    padding: 0 !important; 
+    }
+}
 }
 .scroll-content{
+    
 }
