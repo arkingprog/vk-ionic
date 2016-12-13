@@ -15,7 +15,7 @@ export class WallPhotoSliderComponent implements AfterViewInit {
       slidesPerView: 'auto',
       spaceBetween: 2, 
       freeMode: true,
-      zoom: false,
+      zoom: false
     };
 
 
@@ -23,15 +23,13 @@ export class WallPhotoSliderComponent implements AfterViewInit {
       { 'skip_hidden': 1, 'count': 25 }).subscribe(data => {
         this.photos = data.items;
         this.photos.forEach((value, index, array) => {
-          value.x = this.calcNewSize(value.width,value.height,100,604);
+          value.x = this.calcNewSize(value.width,value.height,100);
         })
       });
   }
 
-  private calcNewSize(width: number, height: number, heightContainer: number, sizeVKPhoto: number): number {
-    let temp = sizeVKPhoto * height / width;
-    let x = heightContainer * sizeVKPhoto / temp;
-    return Math.round(x);
+  private calcNewSize(width: number, height: number, heightContainer: number): number {
+    return Math.round(heightContainer*width/height);
   }
 
   ngAfterViewInit() {
