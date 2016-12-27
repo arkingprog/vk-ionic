@@ -10,23 +10,36 @@
 
 </ion-header>
 <ion-content>
- 
+
   <ion-card>
     <ion-card-content>
       <user-header [user]="user"></user-header>
     </ion-card-content>
   </ion-card>
 
+  <!--new note-->
   <ion-card>
     <ion-card-content>
-       <new-note></new-note>
+      <new-note></new-note>
+    </ion-card-content>
+  </ion-card>
+
+  <!--wall-photo-slides-->
+  <ion-card>
+    <ion-card-content>
+      <wall-photo-slider [count]="user?.counters.photos"></wall-photo-slider>
     </ion-card-content>
   </ion-card>
 
   <ion-card>
     <ion-card-content>
-     <wall-photo-slider [count]="user?.counters.photos"></wall-photo-slider>
+      <data-slider></data-slider>
     </ion-card-content>
   </ion-card>
+
+  <wall>
+    
+  </wall>
+
 
 </ion-content>
