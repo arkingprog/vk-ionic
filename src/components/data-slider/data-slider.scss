@@ -1,0 +1,49 @@
+data-slider {
+  width: 100%;
+  ion-slides {
+    height: 150px;
+  }
+  button {
+    height: 100% !important;
+  }
+  ion-slide {
+    width: 150px !important;
+  }
+  .slide-zoom {
+    height: 100%;
+  }
+  .header {
+    height: 25%;
+    line-height: 37px;
+    text-align: left;
+  }
+  .customButton {
+    width: 150px;
+  }
+  .content-video, .content-audio {
+    background-size: 100%;
+  }
+  .content-video {
+    height: 100%;
+  }
+  .wrapper {
+    height: 100%;
+    width: 100%;
+  }
+
+  .content-audio {
+    display: flex;
+    background-color: rgba(128, 128, 128, .2);
+    flex-direction: column;
+    justify-content: center;
+    height: 75%;
+  }
+  .content-public{
+    display: flex;
+    flex-flow: wrap;
+    .item{
+      width:31%;
+      margin: 1px;
+    }
+  }
+}

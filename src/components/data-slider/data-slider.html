@@ -1,0 +1,70 @@
+<ion-slides [options]="swipeOptions">
+  <ion-slide>
+    <button ion-button clear class="customButton">
+      <div class="wrapper">
+        <div class="header">
+          Видео <span class="count">{{ video?.count }}</span>
+        </div>
+        <div class="content-video" [ngStyle]="{'background-image':'url('+ video?.items[0].photo_320 +')'}">
+        </div>
+      </div>
+    </button>
+  </ion-slide>
+  <ion-slide>
+    <button ion-button clear class="customButton">
+      <div class="wrapper">
+        <div class="header">
+          Аудио <span class="count">{{ audio?.count }}</span>
+        </div>
+        <div class="content-audio">
+          <ion-icon name="musical-notes"></ion-icon>
+          <div class="artist-name">{{ audio?.items[0].artist }}</div>
+          <div class="song-title">{{ audio?.items[0].title }}</div>
+        </div>
+      </div>
+    </button>
+  </ion-slide>
+  <ion-slide>
+    <button ion-button clear class="customButton">
+      <div class="wrapper">
+        <div class="header">
+          Подписки <span class="count">{{ pages?.count }}</span>
+        </div>
+        <div class="content-public">
+          <div class="item" *ngFor="let page of pages.items">
+            <img src={{page?.photo_50}}>
+          </div>
+        </div>
+      </div>
+    </button>
+  </ion-slide>
+  <ion-slide>
+    <button ion-button clear class="customButton">
+      <div class="wrapper">
+        <div class="header">
+          Сообщества <span class="count">{{ groups?.count }}</span>
+        </div>
+        <div class="content-public">
+          <div class="item" *ngFor="let group of groups.items">
+            <lazy-img src={{group?.photo_50}}></lazy-img>
+          </div>
+        </div>
+      </div>
+    </button>
+  </ion-slide>
+  <ion-slide>
+    <button ion-button clear class="customButton">
+      <div class="wrapper">
+        <div class="header">
+          Документы <span class="count">{{ audio?.count }}</span>
+        </div>
+        <div class="content-audio"> 
+          <ion-icon name="musical-notes"></ion-icon>
+          <div class="artist-name">{{ audio?.items[0].artist }}</div>
+          <div class="song-title">{{ audio?.items[0].title }}</div>
+        </div>
+      </div>
+    </button>
+  </ion-slide>
+</ion-slides>
+
