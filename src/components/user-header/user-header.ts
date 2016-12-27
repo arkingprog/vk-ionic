@@ -1,6 +1,6 @@
 
 import { VK } from './../../providers/vk';
-import { User } from './../../lib/vk/typed/user.type';
+import { User } from '../../lib/vk/model/user.type';
 import { Component, Input } from '@angular/core';
 
 @Component({

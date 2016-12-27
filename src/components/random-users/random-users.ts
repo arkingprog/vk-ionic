@@ -1,5 +1,5 @@
 import { Component,Input } from '@angular/core';
-import { User } from './../../lib/vk/typed/user.type';
+import { User } from '../../lib/vk/model/user.type';
 
 @Component({
   selector: 'random-users',
