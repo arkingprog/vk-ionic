@@ -6,6 +6,8 @@ import { LoginPage } from '../pages/login/login';
 import { VK, VKInitParams, VKScope } from "../providers/vk";
 import { MainPage } from "../pages/main/main";
 
+import ImgCache from 'imgcache.js';
+
 @Component({
   templateUrl: `app.html`
 })
@@ -34,6 +36,14 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+
+
+      // ImgCache.options.debug=true;
+      // ImgCache.init(()=>{ console.log('ImgCache init: ok'); },
+      //               ()=>{ console.error('ImgCache init: error! Check the log for errors');});
+                  
+
+
     });
   }
 
