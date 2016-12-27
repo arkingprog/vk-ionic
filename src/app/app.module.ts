@@ -1,28 +1,54 @@
-import { WallPhotoSliderComponent } from './../components/wall-photo-slider/wall-photo-slider';
-import { NewNoteComponent } from './../components/new-note/new-note.ts';
-import { RandomUsersComponent } from './../components/random-users/random-users.ts';
-import { DeclensionPipe } from './../pipes/declension-pipe';
-import { UserOnlinePipe } from './../pipes/user-online';
-import { UserHeaderComponent } from './../components/user-header/user-header';
-import { NgModule } from '@angular/core';
-import { IonicApp, IonicModule } from 'ionic-angular';
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
-import { VK } from "../providers/vk";
-import { MainPage } from "../pages/main/main";
+import {NgModule} from '@angular/core';
+import {IonicApp, IonicModule} from 'ionic-angular';
+import {MyApp} from './app.component';
+
+import {
+  DataSliderComponent,
+  NewNoteComponent,
+  RandomUsersComponent,
+  UserHeaderComponent,
+  WallPhotoSliderComponent,
+  WallComponent,
+  WallPostComponent,
+} from "../components";
+
+import {
+  DeclensionPipe,
+  UserOnlinePipe
+} from './../pipes';
+
+import {
+  HomePage,
+  LoginPage,
+  MainPage
+} from '../pages';
+
+import {VK} from "../providers/vk";
+
+const components = [
+  UserHeaderComponent,
+  RandomUsersComponent,
+  WallPhotoSliderComponent,
+  NewNoteComponent,
+  DataSliderComponent,
+  WallComponent,
+  WallPostComponent,
+];
+const pipes = [
+  UserOnlinePipe,
+  DeclensionPipe,
+]
+const pages = [
+  HomePage,
+  LoginPage,
+  MainPage
+];
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    LoginPage,
-    MainPage, 
-    UserHeaderComponent,
-    RandomUsersComponent,
-    WallPhotoSliderComponent,
-    NewNoteComponent,
-    UserOnlinePipe,
-    DeclensionPipe
+    pages,
+    pipes,
+    components
   ],
   imports: [
     IonicModule.forRoot(MyApp)
