@@ -1,7 +1,8 @@
 wall-photo-slider {
     width:100%;
+  height: 140px !important;
    .img{
-        height: 100px;  
+        height: 100px;
          background-size: cover;
    }
    ion-slides{
@@ -10,9 +11,7 @@ wall-photo-slider {
    .user-photos{
        padding: 15px;
        color:#000;
-       .count{
-            color: #ccc;
-        }
+
 
    }
 }
