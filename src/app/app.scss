@@ -18,7 +18,7 @@
 //rewtite button style for vk
 .customButton{
     border:none;
-    width:100%; 
+    width:100%;
     padding: 0;
     margin: 0;
     text-transform: none;
@@ -27,12 +27,16 @@
     & > .button-inner{
         justify-content: flex-start;
     }
-      
+
 }
 
-.divider{   
+.divider{
     background-color: #ccc;
     width:2px;
     height: 20px;
     margin: auto;
+}
+
+.count{
+  color: #ccc;
 }
